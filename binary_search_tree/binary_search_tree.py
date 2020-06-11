@@ -1,4 +1,6 @@
 import sys
+from queue import Queue
+from stack import Stack
 sys.path.append('../singly_linked_list/')
 from singly_linked_list import LinkedList
 
