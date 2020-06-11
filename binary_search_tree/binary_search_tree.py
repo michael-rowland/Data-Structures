@@ -1,3 +1,7 @@
+import sys
+sys.path.append('../singly_linked_list/')
+from singly_linked_list import LinkedList
+
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -34,7 +38,7 @@ class BSTNode:
         if target == self.value:
             return True
         if target < self.value:
-            self.left.contains(target)
+            return False if not self.left else self.left.contains(target)
         return False if not self.right else self.right.contains(target)
 
     # Return the maximum value found in the tree
@@ -46,8 +50,6 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         fn(self.value)
-        if not self.left and not self.right:
-            return
         if self.left:
             self.left.for_each(fn)
         if self.right:
@@ -58,16 +60,37 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node.left:
+            node.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            node.in_order_print(node.right)
+
+        # DOESN'T WORK
+        # if not node:
+        #     return
+        # node.in_order_print(self.left)
+        # print(self.value)
+        # node.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
+        # use a queue
+        # start queue with root node
+
+        # while loop that checks size of queue
+        # need: pointer variable that updates the beginning of each loop
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
+        # use a stack
+        # start your stack with a root node
+
+        # while loop that checks stack size (while not empty)
+        # need to use a pointer
         pass
 
     # Stretch Goals -------------------------
