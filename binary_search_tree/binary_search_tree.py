@@ -1,7 +1,10 @@
 import sys
 from queue import Queue
 from stack import Stack
-sys.path.append('../singly_linked_list/')
+# from ..queue.queue import Queue
+# from queue import Queue
+# from stack import Stack
+# sys.path.append('../singly_linked_list/')
 from singly_linked_list import LinkedList
 
 """
@@ -68,23 +71,19 @@ class BSTNode:
         if node.right:
             node.in_order_print(node.right)
 
-        # DOESN'T WORK
+        # ALSO WORKS
         # if not node:
         #     return
-        # node.in_order_print(self.left)
-        # print(self.value)
-        # node.in_order_print(self.right)
+        # self.in_order_print(node.left)
+        # print(node.value)
+        # self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        # use a queue
         queue = Queue()
-        # start queue with root node
         queue.enqueue(self)
-        # while loop that checks size of queue
         while len(queue) > 0:
-            # need: pointer variable that updates the beginning of each loop
             node = queue.dequeue()
             print(node.value)
             if node.left:
@@ -95,12 +94,8 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        # use a stack
-        # start your stack with a root node
         stack = Stack()
         stack.push(self)
-        # while loop that checks stack size (while not empty)
-        # need to use a pointer
         while len(stack) > 0:
             node = stack.pop()
             print(node.value)
